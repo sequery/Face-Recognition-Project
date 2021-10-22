@@ -7,10 +7,10 @@ while True:
     ret, test_img = cap.read()
     if not ret:
         continue
-    cv2.imwrite("trainingImages/3/frame%d.jpg" % count, test_img)  # save frame as JPG file
+    cv2.imwrite("trainingImages/3/frame%d.jpg" % count, test_img)  # change the number to redirect to the target directory
     count += 1
     resized_img = cv2.resize(test_img, (1000, 700))
-    cv2.imshow('face detection Tutorial ', resized_img)
+    cv2.imshow('Face Recognition Project ', resized_img)
     if cv2.waitKey(10) == ord('q'):  # wait until 'q' key is pressed
         break
 

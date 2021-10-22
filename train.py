@@ -4,11 +4,11 @@ import numpy as np
 import faceRecognition as fr
 
 # This module takes images  stored in diskand performs face recognition
-test_img = cv2.imread('TestImages/Aga.jpg')  # test_img path
+test_img = cv2.imread('trainImages/Aga.jpg')  # test_img path
 faces_detected, gray_img = fr.faceDetection(test_img)
 print("faces_detected:", faces_detected)
 
-# Comment belows lines when running this program second time.Since it saves training.yml file in directory
+# Comment below lines when running this program second time. Since it saves training.yml file in directory
 faces, faceID = fr.labels_for_training_data('trainingImages')
 face_recognizer = fr.train_classifier(faces, faceID)
 face_recognizer.write('trainingData.yml')
@@ -17,7 +17,7 @@ face_recognizer.write('trainingData.yml')
 face_recognizer = cv2.face.LBPHFaceRecognizer_create()
 face_recognizer.read('trainingData.yml')  # use this to load training data for subsequent runs
 
-name = {1: "Dwayne Johnson", 2: "Aga", 3: "Hajy"}  # creating dictionary containing names for each label
+name = {1: "Dwayne Johnson"}  # creating dictionary containing names for each label
 
 for face in faces_detected:
     (x, y, w, h) = face
@@ -32,6 +32,6 @@ for face in faces_detected:
     fr.put_text(test_img, predicted_name, x, y)
 
 resized_img = cv2.resize(test_img, (1000, 1000))
-cv2.imshow("face dtecetion tutorial", resized_img)
+cv2.imshow("Face Recognition Project", resized_img)
 cv2.waitKey(0)  # Waits indefinitely until a key is pressed
 cv2.destroyAllWindows()

@@ -7,7 +7,7 @@ import faceRecognition as fr
 face_recognizer = cv2.face.LBPHFaceRecognizer_create()
 face_recognizer.read('trainingData.yml')  # Load saved training data
 
-name = {1: "Dwayne Johnson", 2: "Ulanyjy", 3: "Ulanyjy"}
+name = {1: "Dwayne Johnson"}
 
 cap = cv2.VideoCapture(0)
 
@@ -29,9 +29,9 @@ while True:
         if confidence < 30:  # If confidence less than 30 then don't print predicted face text on screen
             fr.put_text(test_img, predicted_name, x, y)
         else:
-            fr.put_text(test_img, "Tanamok", x, y)
+            fr.put_text(test_img, "don't know", x, y)
     resized_img = cv2.resize(test_img, (720, 480))
-    cv2.imshow('face recognition tutorial ', resized_img)
+    cv2.imshow('Face Recognition Project ', resized_img)
     if cv2.waitKey(1) == ord('q'):  # wait until 'q' key is pressed
         break
 
